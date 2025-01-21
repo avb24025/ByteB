@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { LampContainer } from "./Lamp"; // Import the LampContainer component
-import CarouselDemo from "./Carousel"; // Import the Carousel component
+import { LampContainer } from "./Lamping"; // Import the LampContainer component
+// Import the Carousel component
 import { useNavigate } from 'react-router-dom';
 
 export const Land = () => {
