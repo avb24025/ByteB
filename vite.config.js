@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://byte-blog-ebon.vercel.app/", // Backend server URL
+        target: "http://server-byte.vercel.app/", // Backend server URL
         changeOrigin: true,
         secure: false,
       },
