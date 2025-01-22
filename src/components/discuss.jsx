@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
 // Connect to the backend server
-const socket = io("https://bytesblog.netlify.app/", {
+const socket = io("https://server-byte.vercel.app/", {
   withCredentials: true, // Include credentials (important for CORS)
 });
 
+console.log("Socket connected");
 const Discuss = () => {
   const [messages, setMessages] = useState([]); // Store all chat messages
   const [newMessage, setNewMessage] = useState(""); // Input field state
