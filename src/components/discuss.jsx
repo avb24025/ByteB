@@ -2,16 +2,15 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
 // Connect to the backend server
-const socket = io("https://server-byte.vercel.app/", {
-  withCredentials: true, // Include credentials (important for CORS)
+const socket = io("https://server-byte.vercel.app", {
+  withCredentials: true, // Enable credentials for CORS
 });
 
-console.log("Socket connected");
 const Discuss = () => {
-  const [messages, setMessages] = useState([]); // Store all chat messages
-  const [newMessage, setNewMessage] = useState(""); // Input field state
+  const [messages, setMessages] = useState([]); // Store chat messages
+  const [newMessage, setNewMessage] = useState(""); // Input message state
 
-  // Listen for messages from the server
+  // Listen for incoming messages from the server
   useEffect(() => {
     socket.on("receiveMessage", (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
@@ -19,14 +18,13 @@ const Discuss = () => {
 
     return () => {
       socket.off("receiveMessage");
-      console.log("Socket disconnected");
     };
   }, []);
 
   // Handle sending messages
   const handleSendMessage = () => {
     if (newMessage.trim()) {
-      socket.emit("sendMessage", newMessage); // Send message to the server
+      socket.emit("sendMessage", newMessage); // Emit the message to the server
       setNewMessage(""); // Clear input field
     }
   };
